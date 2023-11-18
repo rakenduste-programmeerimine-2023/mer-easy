@@ -1,10 +1,23 @@
-<a href="https://demo-nextjs-with-supabase.vercel.app/">
-  <img alt="Next.js and Supabase Starter Kit - the fastest way to build apps with Next.js and Supabase" src="https://demo-nextjs-with-supabase.vercel.app/opengraph-image.png">
-  <h1 align="center">Next.js and Supabase Starter Kit</h1>
+![Picture projecto.png](app%2FPicture%20projecto.png)
+
+<a> 
+  <h1 align="center">MRPeasy and Merit Aktiva Integration</h1>
 </a>
 
 <p align="center">
- The fastest way to build apps with Next.js and Supabase
+  A program that connects MRPeasy and Merit Aktiva for seamless data integration and improved workflow efficiency.
+</p>
+
+# Our programs Template
+
+![LogIn.png](app%2FLogIn.png)
+<p>
+    Login page where the user will be able to log in from
+</p>
+
+![Tables.png](app%2FTables.png)
+<p>
+    And the template to our tables and a very basic idea on how the data will look like
 </p>
 
 <p align="center">
