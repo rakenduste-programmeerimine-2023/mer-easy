@@ -21,7 +21,7 @@ export default function Login({searchParams}: {
       if (error) {
         return redirect('/?message=Could not authenticate user')
       }
-      return redirect('/')
+      return redirect('/home')
   }
 
   return (
