@@ -1,11 +1,5 @@
-import DeployButton from '../components/DeployButton'
-import AuthButton from '../components/AuthButton'
 import { createClient } from '@/utils/supabase/server'
-import ConnectSupabaseSteps from '@/components/ConnectSupabaseSteps'
-import SignUpUserSteps from '@/components/SignUpUserSteps'
-import Header from '@/components/Header'
 import { cookies } from 'next/headers'
-import Link from "next/link";
 import {redirect} from "next/navigation";
 
 export default function Login({searchParams}: {
@@ -27,9 +21,8 @@ export default function Login({searchParams}: {
       if (error) {
         return redirect('/?message=Could not authenticate user')
       }
-
       return redirect('/')
-    }
+  }
 
   return (
       <div className="flex-1 flex flex-col w-full px-8 sm:max-w-md justify-center gap-2">
