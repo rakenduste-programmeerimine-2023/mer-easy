@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    --background: 200 20% 98%;
+    --background: 50 5% 94%, 200 20% 94%; /* Alabaster white with a subtle yellow tint */
     --btn-background: 200 10% 91%;
     --btn-background-hover: 200 10% 89%;
     --foreground: 200 50% 3%;
@@ -12,7 +12,7 @@
 
   @media (prefers-color-scheme: dark) {
     :root {
-      --background: 200 50% 3%;
+      --background: 50 5% 87%, 200 5% 87%; /* Warmer and dimmer dark mode background */
       --btn-background: 200 10% 9%;
       --btn-background-hover: 200 10% 12%;
       --foreground: 200 20% 96%;
