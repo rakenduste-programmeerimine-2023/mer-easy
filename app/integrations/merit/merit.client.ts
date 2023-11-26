@@ -1,36 +1,46 @@
-// import CryptoJS from 'crypto-js';
 "use server"
-import axios from 'axios';
+import axios, { AxiosInstance } from 'axios';
+import { encodeToBase64 } from "next/dist/build/webpack/loaders/utils";
+import { createHmac } from "crypto";
 
-export const fetchData = async () => {
-    const ApiId = process.env.MERIT_API_ID;
-    const ApiKey = process.env.MERIT_API_KEY;
+const API_BASE_URL = process.env.MERIT_API_URL;
+const API_ID = process.env.MERIT_API_ID;
+const API_KEY = process.env.MERIT_API_KEY;
+
+const createClient = (): AxiosInstance => {
+    const headers = {
+        'Content-Type': 'application/json',
+    };
+
+    return axios.create({
+        baseURL: API_BASE_URL,
+        headers,
+    });
+};
+
+const apiGetMeritItems = async () => {
+    const client = createClient();
 
     try {
-        const timestamp = getTimestamp();
-        // const dataString = ApiId + timestamp;
-        // const hash = CryptoJS.HmacSHA256(dataString, ApiKey);
-        // const signature = CryptoJS.enc.Base64.stringify(hash);
-        //
-        // console.log(dataString);
-        // console.log(hash);
-        // console.log(signature);
-        console.log(timestamp);
-        console.log(ApiId);
-        console.log(ApiKey);
-
-        const url = 'https://aktiva.merit.ee/api/v1/' + 'getinvoices' + '?ApiId=' + ApiId + '&timestamp=' + timestamp// + '&signature=' + signature;
-        const response = await fetch(url);
-
-        console.log('Response:', response);
-        return response;
+        const authString = getAuthorizationString();
+        const response = await client.get('/getitems' + authString);
+        return response.data;
     } catch (error) {
         console.error('Error fetching data:', error.message);
         throw error;
     }
 };
 
-function getTimestamp() {
+function getAuthorizationString(jsonData?: string): string {
+    const timestamp = getTimestamp();
+    const dataString = API_ID + timestamp + jsonData ?? '';
+    const hash = createHmac('sha256', dataString, API_KEY);
+    const signature = encodeToBase64(hash);
+
+    return '?ApiId=' + API_ID + '&timestamp=' + timestamp + '&signature=' + signature;
+}
+
+function getTimestamp(): string {
     const d = new Date();
     const yyyy = d.getFullYear();
     const MM = pad2(d.getMonth() + 1);
@@ -41,6 +51,8 @@ function getTimestamp() {
     return yyyy + MM + dd + HH + mm + ss;
 }
 
-function pad2(n) {
+function pad2(n): string {
     return n > 9 ? '' + n : '0' + n;
 }
+
+export { apiGetMeritItems };
