@@ -1,4 +1,6 @@
 // import CryptoJS from 'crypto-js';
+"use server"
+import axios from 'axios';
 
 export const fetchData = async () => {
     const ApiId = process.env.MERIT_API_ID;
