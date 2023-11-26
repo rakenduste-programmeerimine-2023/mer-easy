@@ -1,14 +1,24 @@
 "use client"
 import { useState } from 'react';
-import { getItems } from "@/app/integrations/mrpeasy/mrpeasy.client";
+import { getMrpItems } from "@/app/integrations/mrpeasy/mrpeasy.client";
 
 export default function Home() {
     const [mrpEasyItems, setMrpEasyItems] = useState<MRPEasyItem[]>([]);
+    const [meritItems, setMeritItems] = useState('Tere');
 
-    const handleClick = async () => {
+    const getMrpEasyItems = async () => {
         try {
-            const data = await getItems();
+            const data = await getMrpItems();
             setMrpEasyItems(data);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    const getMeritItems = async () => {
+        try {
+            const data = await getMeritItems();
+            setMeritItems('Items laetud');
         } catch (error) {
             console.log(error);
         }
@@ -16,7 +26,7 @@ export default function Home() {
 
     return (
         <div className="flex-1 flex flex-col w-full px-8 sm:max-w-md justify-center gap-2">
-            <button style={{ border: '1px solid black' }} onClick={handleClick}>
+            <button style={{ border: '1px solid black' }} onClick={getMrpEasyItems}>
                 Get MRPEasy Items!
             </button>
             {mrpEasyItems.length > 0 && (
@@ -41,6 +51,10 @@ export default function Home() {
                     </tbody>
                 </table>
             )}
+            <button style={{ border: '1px solid black' }} onClick={getMeritItems}>
+                Get Merit Aktiva Items!
+            </button>
+            <span>{meritItems}</span>
         </div>
     );
 }
