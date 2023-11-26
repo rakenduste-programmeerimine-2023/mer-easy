@@ -16,7 +16,7 @@ const createClient = () => {
     });
 };
 
-const getItems = async () => {
+const getMrpItems = async (): Promise<MRPEasyItem[]> => {
     const client = createClient();
 
     try {
@@ -27,4 +27,4 @@ const getItems = async () => {
     }
 };
 
-export { createClient, getItems };
+export { getMrpItems };
