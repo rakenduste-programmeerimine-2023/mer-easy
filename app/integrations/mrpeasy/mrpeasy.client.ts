@@ -1,9 +1,9 @@
 "use server"
-import axios from 'axios';
+import axios, { AxiosInstance } from 'axios';
 
 const API_BASE_URL = process.env.MRPEASY_API_URL;
 
-const createClient = () => {
+const createClient = (): AxiosInstance => {
     const headers = {
         'Content-Type': 'application/json',
         'api_key': process.env.MRPEASY_API_KEY,
@@ -16,7 +16,7 @@ const createClient = () => {
     });
 };
 
-const getMrpItems = async (): Promise<MRPEasyItem[]> => {
+const apiGetMrpItems = async (): Promise<MRPEasyItem[]> => {
     const client = createClient();
 
     try {
@@ -27,4 +27,4 @@ const getMrpItems = async (): Promise<MRPEasyItem[]> => {
     }
 };
 
-export { getMrpItems };
+export { apiGetMrpItems };

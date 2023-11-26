@@ -1,14 +1,15 @@
 "use client"
 import { useState } from 'react';
-import { getMrpItems } from "@/app/integrations/mrpeasy/mrpeasy.client";
+import { apiGetMrpItems } from "@/app/integrations/mrpeasy/mrpeasy.client";
+import { apiGetMeritItems } from "@/app/integrations/merit/merit.client";
 
 export default function Home() {
     const [mrpEasyItems, setMrpEasyItems] = useState<MRPEasyItem[]>([]);
-    const [meritItems, setMeritItems] = useState('Tere');
+    const [meritItems, setMeritItems] = useState('');
 
     const getMrpEasyItems = async () => {
         try {
-            const data = await getMrpItems();
+            const data = await apiGetMrpItems();
             setMrpEasyItems(data);
         } catch (error) {
             console.log(error);
@@ -17,8 +18,9 @@ export default function Home() {
 
     const getMeritItems = async () => {
         try {
-            const data = await getMeritItems();
-            setMeritItems('Items laetud');
+            const data = await apiGetMeritItems();
+            console.log(data); // TODO REMOVE
+            setMeritItems('Found ' + data.length + ' items from Merit Aktiva! Check console to see items.');
         } catch (error) {
             console.log(error);
         }
