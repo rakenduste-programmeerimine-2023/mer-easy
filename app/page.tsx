@@ -1,9 +1,8 @@
 import '@/app/styles/loginStyles.scss'
 import { createClient } from '@/utils/supabase/server'
 import { cookies } from 'next/headers'
-import {redirect} from "next/navigation";
-
-const logoPath = 'app/MerEasyLogo.png';
+import { redirect } from "next/navigation";
+import Image from 'next/image';
 
 export default function Login({searchParams}: {
   searchParams: { message: string }
@@ -30,7 +29,7 @@ export default function Login({searchParams}: {
     return (
         <div className="flex-1 login-container">
             <form className="animate-in login-form" action={signIn}>
-                <img src={logoPath} alt="Company Logo" className="logo" />
+                <Image src={'/MerEasyLogo.png'} alt="Company Logo" width={100} height={100} className="logo"/>
                 <div className="text-to-bottom">
                 <label className="text-md" htmlFor="email">
                     Email
