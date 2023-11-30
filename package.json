@@ -10,6 +10,7 @@
     "@supabase/supabase-js": "latest",
     "antd": "^5.11.4",
     "autoprefixer": "10.4.15",
+    "axios": "^1.6.2",
     "geist": "^1.0.0",
     "next": "latest",
     "postcss": "8.4.29",
