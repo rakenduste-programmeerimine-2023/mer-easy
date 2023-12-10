@@ -1,15 +1,15 @@
-$navButtonBackgroundColor: #a6acff;  // Warm Grey color
+$navButtonBackgroundColor: #404cee;  // Warm Grey color
 $BlackTextColor: #000000;  // Black color
 
 
 .flex-column-container {
-  background-color: $navButtonBackgroundColor;
+  background: linear-gradient(to right, #1890ff, #0a5bc4);
   padding: 10px;  // Adjust as needed
   margin: 20px 0 0 20px;  // Adjust margin from the top and left
   border-radius: 8px;
 
   .nav-button {
-    background-color: $navButtonBackgroundColor;
+    background: linear-gradient(to right, #1890ff, #0a5bc4);
     color: $BlackTextColor;
     border-radius: 8px;
     border: 1px solid $BlackTextColor;  // Border color same as text color

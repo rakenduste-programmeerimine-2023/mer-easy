@@ -1,9 +1,10 @@
 "use client"
-import { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { apiGetMrpItems } from "@/app/integrations/mrpeasy/mrpeasy.client";
 import { apiGetMeritItems } from "@/app/integrations/merit/merit.client";
-import '@/app/styles/homeStyles.scss'
 import Menu from "@/components/Menu";
+import DataTable from "@/components/Table";
+import '@/app/styles/homeStyles.scss';
 
 export default function Home() {
     const [mrpEasyItems, setMrpEasyItems] = useState<MRPEasyItem[]>([]);
@@ -23,14 +24,21 @@ export default function Home() {
             const data = await apiGetMeritItems();
             console.log(data); // TODO REMOVE
             setMeritItems('Found ' + data.length + ' items from Merit Aktiva! Check console to see items.');
+            setMrpEasyItems(data); // Update mrpEasyItems with Merit items data
         } catch (error) {
             console.log(error);
         }
     };
 
+    // Use useEffect to watch for changes in meritItems
+    useEffect(() => {
+        // You can do additional processing here if needed
+        console.log('meritItems updated:', meritItems);
+    }, [meritItems]);
+
     return (
         <div className="flex">
-            <Menu></Menu>
+            <Menu />
             {/* Top left section for API buttons */}
             <div className="api-buttons">
                 <div className="buttons">
@@ -65,6 +73,7 @@ export default function Home() {
                     <span>{meritItems}</span>
                 </div>
             </div>
+            {mrpEasyItems.length > 0 && <DataTable tableData={mrpEasyItems} />}
         </div>
     );
 }
