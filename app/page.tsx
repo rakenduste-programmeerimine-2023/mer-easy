@@ -28,8 +28,8 @@ export default function Login({searchParams}: {
 
     return (
         <div className="flex-1 login-container">
+            <Image src={'/MerEasyLogo.png'} alt="Company Logo" width={330} height={330} className="logo" />
             <form className="animate-in login-form" action={signIn}>
-                <Image src={'/MerEasyLogo.png'} alt="Company Logo" width={100} height={100} className="logo"/>
                 <div className="text-to-bottom">
                 <label className="text-md" htmlFor="email">
                     Email
