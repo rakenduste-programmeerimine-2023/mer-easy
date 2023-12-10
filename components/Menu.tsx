@@ -12,16 +12,6 @@ export default function Menu() {
                     <button className="nav-button" onClick={() => console.log('Page 6 clicked')}>Page 6</button>
                 </div>
             </div>
-
-            {/* Right section for the table with filters */}
-            <div className="flex-content-container">
-                <div className="table-filters">
-                    {/* Your table filters go here */}
-                </div>
-                <table>
-                    {/* Your table content goes here */}
-                </table>
-            </div>
         </div>
     );
 }
