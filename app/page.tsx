@@ -31,31 +31,31 @@ export default function Login({searchParams}: {
             <Image src={'/MerEasyLogo.png'} alt="Company Logo" width={330} height={330} className="logo" />
             <form className="animate-in login-form" action={signIn}>
                 <div className="text-to-bottom">
-                <label className="text-md" htmlFor="email">
-                    Email
-                </label>
-                <input
-                    className="rounded-md px-4 py-2 bg-inherit border mb-6"
-                    name="email"
-                    placeholder="you@example.com"
-                    required
-                />
-                <label className="text-md" htmlFor="password">
-                    Password
-                </label>
-                <input
-                    className="rounded-md px-4 py-2 bg-inherit border mb-6"
-                    type="password"
-                    name="password"
-                    placeholder="••••••••"
-                    required
-                />
-                <button className="bg-green-700 rounded-md px-4 py-2 text-foreground mb-2">Sign In</button>
-                {searchParams?.message && (
-                    <p className="mt-4 p-4 bg-foreground/10 text-foreground text-center">
-                        {searchParams.message}
-                    </p>
-                )}
+                    <label className="text-md" htmlFor="email">
+                        Email
+                    </label>
+                    <input
+                        className="rounded-md px-4 py-2 bg-inherit border mb-6"
+                        name="email"
+                        placeholder="you@example.com"
+                        required
+                    />
+                    <label className="text-md" htmlFor="password">
+                        Password
+                    </label>
+                    <input
+                        className="rounded-md px-4 py-2 bg-inherit border mb-6"
+                        type="password"
+                        name="password"
+                        placeholder="••••••••"
+                        required
+                    />
+                    <button className="bg-green-700 rounded-md px-4 py-2 text-foreground mb-2">Sign In</button>
+                    {searchParams?.message && (
+                        <p className="mt-4 p-4 bg-foreground/10 text-foreground text-center">
+                            {searchParams.message}
+                        </p>
+                    )}
                 </div>
             </form>
         </div>

@@ -7,10 +7,6 @@ $BlackTextColor: #000000;  // Black color
   padding: 10px;  // Adjust as needed
   margin: 20px 0 0 20px;  // Adjust margin from the top and left
   border-radius: 8px;
-  display: flex;
-  flex-direction: column;
-
-
 
   .nav-button {
     background-color: $navButtonBackgroundColor;
@@ -24,12 +20,6 @@ $BlackTextColor: #000000;  // Black color
       background-color: darken($navButtonBackgroundColor, 10%);  // Darken the background color on hover
     }
   }
-}
-
-.main-container {
-  display: flex;
-  flex-direction: column;
-  height: 100vh; /* Set the height to 100% of the viewport height */
 }
 
 .api-buttons {
@@ -48,11 +38,6 @@ $BlackTextColor: #000000;  // Black color
     gap: 0.5rem/* 8px */;
     color: $BlackTextColor;
   }
-}
-
-.flex {
-  display: flex;
-  flex: 1; /* Takes up remaining space vertically */
 }
 
 .nav-panel {
