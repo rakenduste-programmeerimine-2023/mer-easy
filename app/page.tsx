@@ -1,49 +1,67 @@
-import DeployButton from '../components/DeployButton'
-import AuthButton from '../components/AuthButton'
+import '@/app/styles/loginStyles.scss'
 import { createClient } from '@/utils/supabase/server'
 import ConnectSupabaseSteps from '@/components/ConnectSupabaseSteps'
 import SignUpUserSteps from '@/components/SignUpUserSteps'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { cookies } from 'next/headers'
+import { redirect } from "next/navigation";
+import Image from 'next/image';
 
+export default function Login({searchParams}: {
+  searchParams: { message: string }
+}) {
+  const signIn = async (formData: FormData) => {
+      'use server'
 
-export default async function Index() {
-  const cookieStore = cookies()
+      const email = formData.get('email') as string
+      const password = formData.get('password') as string
+      const cookieStore = cookies()
+      const supabase = createClient(cookieStore)
 
-  const canInitSupabaseClient = () => {
-    // This function is just for the interactive tutorial.
-    // Feel free to remove it once you have Supabase connected.
-    try {
-      createClient(cookieStore)
-      return true
-    } catch (e) {
-      return false
-    }
+      const { error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      })
+
+      if (error) {
+        return redirect('/?message=Could not authenticate user')
+      }
+      return redirect('/home')
   }
 
-  const isSupabaseConnected = canInitSupabaseClient()
-
-  return (
-    <div className="flex-1 w-full flex flex-col gap-20 items-center">
-      {/*<nav className="w-full flex justify-center border-b border-b-foreground/10 h-16">
-        <div className="w-full max-w-4xl flex justify-between items-center p-3 text-sm">
-          <DeployButton />
-          {isSupabaseConnected && <AuthButton />}
+    return (
+        <div className="flex-1 login-container">
+            <Image src={'/MerEasyLogo.png'} alt="Company Logo" width={330} height={330} className="logo" />
+            <form className="animate-in login-form" action={signIn}>
+                <div className="text-to-bottom">
+                <label className="text-md" htmlFor="email">
+                    Email
+                </label>
+                <input
+                    className="rounded-md px-4 py-2 bg-inherit border mb-6"
+                    name="email"
+                    placeholder="you@example.com"
+                    required
+                />
+                <label className="text-md" htmlFor="password">
+                    Password
+                </label>
+                <input
+                    className="rounded-md px-4 py-2 bg-inherit border mb-6"
+                    type="password"
+                    name="password"
+                    placeholder="••••••••"
+                    required
+                />
+                <button className="bg-green-700 rounded-md px-4 py-2 text-foreground mb-2">Sign In</button>
+                {searchParams?.message && (
+                    <p className="mt-4 p-4 bg-foreground/10 text-foreground text-center">
+                        {searchParams.message}
+                    </p>
+                )}
+                </div>
+            </form>
         </div>
-  </nav>
-  
-  Commented it out in case we happen to need it in the future*/}
-
-      <div className="animate-in  gap-20 opacity-0 max-w-4xl px-3">
-        <Header />
-        <main className="flex-1 flex flex-col gap-6">
-          <h2 className="font-bold text-4xl mb-4">Next steps</h2>
-          {/*isSupabaseConnected ? <SignUpUserSteps /> : <ConnectSupabaseSteps />*/}
-        </main>
-      </div>
-
-      <Footer />
-    </div>
-  )
+    );
 }
