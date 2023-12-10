@@ -1,9 +1,5 @@
 import '@/app/styles/loginStyles.scss'
 import { createClient } from '@/utils/supabase/server'
-import ConnectSupabaseSteps from '@/components/ConnectSupabaseSteps'
-import SignUpUserSteps from '@/components/SignUpUserSteps'
-import Header from '@/components/Header'
-import Footer from '@/components/Footer'
 import { cookies } from 'next/headers'
 import { redirect } from "next/navigation";
 import Image from 'next/image';
