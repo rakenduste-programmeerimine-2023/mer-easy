@@ -18,12 +18,13 @@ const createClient = (): AxiosInstance => {
     });
 };
 
-const apiGetMeritItems = async () => {
+const apiGetMeritItems = async (): Promise<MeritItem[]> => {
     const client = createClient();
 
     try {
         const authString = getAuthorizationString();
         const response = await client.get('/getitems' + authString);
+        console.log('Found ' + response.data.length + ' Merit items.'); // Leave this here for debugging!
         return response.data;
     } catch (error) {
         console.error('Error fetching data:', error.message);

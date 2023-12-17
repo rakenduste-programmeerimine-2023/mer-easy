@@ -21,6 +21,7 @@ const apiGetMrpItems = async (): Promise<MRPEasyItem[]> => {
 
     try {
         const response = await client.get('/items');
+        console.log('Found ' + response.data.length + ' MRPEasy items.'); // Leave this here for debugging!
         return response.data;
     } catch (error) {
         console.error('Error:', error.message);

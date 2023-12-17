@@ -1,7 +1,7 @@
 import React from 'react';
 import { Table } from 'antd';
 
-class DataTable extends React.Component<{ tableData: any }> {
+class DataTable extends React.Component<{ tableData: any }, any> {
     render() {
         let {tableData} = this.props;
         const columns = [
@@ -32,7 +32,11 @@ class DataTable extends React.Component<{ tableData: any }> {
             },
         ];
 
-        return <Table columns={columns} dataSource={tableData}/>;
+        return (
+            <div className="table">
+                <Table columns={columns} dataSource={tableData}/>
+            </div>
+        );
     }
 }
 

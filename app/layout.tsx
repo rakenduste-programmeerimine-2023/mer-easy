@@ -1,6 +1,6 @@
 import { GeistSans } from 'geist/font'
 import './globals.css'
-import '@/app/styles/homeStyles.scss'
+import '@/app/styles/layout.scss'
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import React from "react";
@@ -20,7 +20,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={GeistSans.className}>
       <body className="bg-background text-foreground">
           <main>
-              <div className="flex flex-col min-h-screen">
+              <div className="main-body flex flex-col min-h-screen">
                   <Header />
                   <div className="flex-grow">
                       {children}
