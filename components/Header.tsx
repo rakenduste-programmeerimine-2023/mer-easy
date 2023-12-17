@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function Header() {
     return (
-        <div className="header flex justify-between items-center p-4 text-white">
+        <div className="header flex justify-between items-center text-white">
             <div className="logo-container">
                 <Image
                     src="/MerEasyLogo-small.png"
