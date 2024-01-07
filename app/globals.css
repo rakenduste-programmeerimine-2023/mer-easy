@@ -3,6 +3,6 @@
 @tailwind utilities;
 
 .main-body {
-    position: relative; /* Ensure the main body is also positioned */
-    z-index: 1; /* Ensure the main body stays above the pseudo-elements */
+    position: relative;
+    z-index: 1;
 }
