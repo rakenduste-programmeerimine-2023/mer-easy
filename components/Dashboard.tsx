@@ -2,7 +2,7 @@ import { Routes } from "@/app/routes/routes";
 import { useRouter } from "next/navigation";
 import '@/app/styles/menu.scss';
 
-export default function MenuContent() {
+export default function Dashboard() {
     const router = useRouter();
 
     const changePage = async (route: Routes) => {
@@ -10,7 +10,7 @@ export default function MenuContent() {
     };
 
     return (
-        <div className="menu-content">
+        <div className="dashboard-content">
             <div className="picture-container">
                 {/* First Picture and Button */}
                 <img src="meritaktiva.png" alt="First Image" className="medium-sized-image" />

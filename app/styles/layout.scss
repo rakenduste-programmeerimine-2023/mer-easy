@@ -5,12 +5,10 @@
 }
 
 .nav-panel {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   height: 60vh;
-  padding: 20px; // Adjust as needed
-  width: 200px;
+  padding: 20px;
+  min-width: 240px;
+  margin-top: 60px;
 }
 
 .flex-content-container {
@@ -20,14 +18,13 @@
 }
 
 .table-filters {
-  margin-bottom: 20px; /* Adjust as needed */
-  /* Your filter styles go here */
+  margin-bottom: 20px;
 }
 
 .table {
   width: 100%;
   margin: 0 50px;
-  /* Your table styles go here */
+
 }
 
 .content {
