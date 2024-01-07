@@ -2,12 +2,13 @@
 import axios, { AxiosInstance } from 'axios';
 import { encodeToBase64 } from "next/dist/build/webpack/loaders/utils";
 import { createHmac } from "crypto";
+import supabase from "@/utils/supabase/supabase";
 
 const API_BASE_URL = process.env.MERIT_API_URL;
 const API_ID = process.env.MERIT_API_ID;
 const API_KEY = process.env.MERIT_API_KEY;
 
-const createClient = (): AxiosInstance => {
+const createMeritClient = (): AxiosInstance => {
     const headers = {
         'Content-Type': 'application/json',
     };
@@ -19,18 +20,44 @@ const createClient = (): AxiosInstance => {
 };
 
 const apiGetMeritItems = async (): Promise<MeritItem[]> => {
-    const client = createClient();
+    const client = createMeritClient();
 
     try {
         const authString = getAuthorizationString();
         const response = await client.get('/getitems' + authString);
         console.log('Found ' + response.data.length + ' Merit items.'); // Leave this here for debugging!
+
+        await saveItems(response.data);
         return response.data;
     } catch (error) {
         console.error('Error fetching data:', error.message);
         throw error;
     }
 };
+
+const saveItems = async (items: MeritItem[]): Promise<void> => {
+    const itemsToInsert: object[] = [];
+    for (const item of items) {
+        itemsToInsert.push({
+            merit_id: item.ItemId,
+            name: item.Name,
+            code: item.Code,
+            sales_price: item.SalesPrice,
+            quantity: item.InventoryQty,
+            type: item.Type
+        });
+    }
+
+    const { error } = await supabase
+        .from('merit_items')
+        .insert(itemsToInsert)
+        .select()
+
+    if (error) {
+        console.error('Error saving items to Supabase:', error.message);
+        throw error;
+    }
+}
 
 function getAuthorizationString(jsonData?: string): string {
     const timestamp = getTimestamp();
