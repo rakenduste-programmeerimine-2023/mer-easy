@@ -3,5 +3,6 @@
 @tailwind utilities;
 
 .main-body {
-    padding: 25px 50px 0 75px;
+    position: relative; /* Ensure the main body is also positioned */
+    z-index: 1; /* Ensure the main body stays above the pseudo-elements */
 }

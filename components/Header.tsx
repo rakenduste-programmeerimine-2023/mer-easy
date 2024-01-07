@@ -1,18 +1,20 @@
 import Image from "next/image";
+import '@/app/styles/headerAndFooter.scss'
 
 export default function Header() {
     return (
         <div className="header flex justify-between items-center text-white">
-            <div className="logo-container">
+            <div className="logo-container logo-Padding">
                 <Image
                     src="/MerEasyLogo-small.png"
                     alt="Company Logo"
-                    width={100}
-                    height={100}
+                    width={70}
+                    height={70}
+                    className="rounded-lg"
                 />
             </div>
 
-            <div className="profile-container">
+            <div className="profile-container profile-Padding">
                 <Image
                     src="/nondescript_pfp.png"
                     alt="Profile Picture"
@@ -23,5 +25,4 @@ export default function Header() {
             </div>
         </div>
     );
-
 }
