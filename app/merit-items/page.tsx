@@ -1,5 +1,5 @@
 "use client"
-import React, {useState, useEffect, useRef} from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { apiGetMeritItems } from "@/app/integrations/merit/merit.client";
 import Menu from "@/components/Menu";
 import DataTable from "@/components/Table";
