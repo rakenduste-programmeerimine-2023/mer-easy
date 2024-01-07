@@ -4,6 +4,7 @@ import { apiGetMrpItems } from "@/app/integrations/mrpeasy/mrpeasy.client";
 import { getItems } from "@/app/integrations/merit/merit.client";
 import Menu from "@/components/Menu";
 import '@/app/styles/layout.scss';
+import Dashboard from "@/components/Dashboard";
 
 const Home = () => {
     const [mrpEasyItems, setMrpEasyItems] = useState<MRPEasyItem[]>([]);
@@ -31,6 +32,7 @@ const Home = () => {
     return (
         <div className="content">
             <Menu />
+            <Dashboard />
         </div>
     );
 }

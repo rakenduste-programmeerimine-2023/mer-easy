@@ -1,6 +1,7 @@
 import { Routes } from "@/app/routes/routes";
-import {useRouter} from "next/navigation";
-
+import { useRouter } from "next/navigation";
+import '@/app/styles/menu.scss';
+import '@/app/styles/layout.scss';
 
 export default function Menu() {
     const router = useRouter();
