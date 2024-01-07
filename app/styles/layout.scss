@@ -2,29 +2,15 @@
   display: flex;
   flex-direction: column;
   border-radius: 8px;
-
-  .nav-button {
-    color: black;
-    border-radius: 8px;
-    border: 1px solid #1890ff;  // Border color same as text color
-    padding: 10px;  // Adjust as needed
-    margin-bottom: 8px;  // Adjust as needed
-
-    &:hover {
-      background-color: #d4e4ff;  // Darken the background color on hover
-    }
-  }
-}
-
-.content {
-  display: flex;
-  flex-direction: row;
-  margin-top: 40px;
 }
 
 .nav-panel {
-  width: 240px; /* Adjust as needed */
-  min-width: 240px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60vh;
+  padding: 20px; // Adjust as needed
+  width: 200px;
 }
 
 .flex-content-container {
@@ -42,4 +28,9 @@
   width: 100%;
   margin: 0 50px;
   /* Your table styles go here */
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
 }
