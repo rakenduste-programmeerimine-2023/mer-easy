@@ -1,40 +1,47 @@
 import React from 'react';
 import { Table } from 'antd';
+import Actions from "@/components/Actions";
 
 class DataTable extends React.Component<{ tableData: any }, any> {
     render() {
-        let {tableData} = this.props;
+        let { tableData } = this.props;
         const columns = [
             {
+                title: 'Uuid',
+                dataIndex: 'uuid',
+                key: 'uuid',
+            },
+            {
                 title: 'Code',
-                dataIndex: 'Code',
-                key: 'Code',
+                dataIndex: 'code',
+                key: 'code',
             },
             {
                 title: 'Name',
-                dataIndex: 'Name',
-                key: 'Name',
+                dataIndex: 'name',
+                key: 'name',
             },
             {
                 title: 'Sales Price',
                 dataIndex: 'SalesPrice',
-                key: 'SalesPrice',
+                key: 'sales_price',
             },
             {
                 title: 'Inventory Qty',
-                dataIndex: 'InventoryQty',
-                key: 'InventoryQty',
+                dataIndex: 'quantity',
+                key: 'quantity',
             },
             {
                 title: 'Type',
-                dataIndex: 'Type',
-                key: 'Type',
+                dataIndex: 'type',
+                key: 'type',
             },
         ];
 
         return (
             <div className="table">
-                <Table columns={columns} dataSource={tableData}/>
+                <Actions />
+                <Table rowKey="uuid" columns={ columns } dataSource={ tableData }/>
             </div>
         );
     }

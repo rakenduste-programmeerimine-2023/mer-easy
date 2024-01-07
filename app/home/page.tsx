@@ -1,7 +1,7 @@
 "use client"
 import React, { useState } from 'react';
 import { apiGetMrpItems } from "@/app/integrations/mrpeasy/mrpeasy.client";
-import { apiGetMeritItems } from "@/app/integrations/merit/merit.client";
+import { getItems } from "@/app/integrations/merit/merit.client";
 import Menu from "@/components/Menu";
 import '@/app/styles/layout.scss';
 
@@ -20,7 +20,7 @@ const Home = () => {
 
     const getMeritItems = async () => {
         try {
-            const data = await apiGetMeritItems();
+            const data = await getItems();
             console.log(data); // TODO REMOVE
             setMeritItems('Found ' + data.length + ' items from Merit Aktiva! Check console to see items.');
         } catch (error) {

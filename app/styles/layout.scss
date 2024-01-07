@@ -25,6 +25,7 @@
 .nav-panel {
   width: 240px; /* Adjust as needed */
   min-width: 240px;
+  margin-top: 60px;
 }
 
 .flex-content-container {
@@ -42,4 +43,23 @@
   width: 100%;
   margin: 0 50px;
   /* Your table styles go here */
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 15px;
+}
+
+.action-button {
+  padding: 10px 15px;
+  background-color: #1890ff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.action-button:hover {
+  background-color: #0056b3;
 }

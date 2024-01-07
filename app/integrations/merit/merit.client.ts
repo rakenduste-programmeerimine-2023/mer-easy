@@ -3,6 +3,7 @@ import axios, { AxiosInstance } from 'axios';
 import { encodeToBase64 } from "next/dist/build/webpack/loaders/utils";
 import { createHmac } from "crypto";
 import supabase from "@/utils/supabase/supabase";
+import { MeritItemEntity } from "@/app/integrations/merit/entities/item.entity";
 
 const API_BASE_URL = process.env.MERIT_API_URL;
 const API_ID = process.env.MERIT_API_ID;
@@ -27,7 +28,6 @@ const apiGetMeritItems = async (): Promise<MeritItem[]> => {
         const response = await client.get('/getitems' + authString);
         console.log('Found ' + response.data.length + ' Merit items.'); // Leave this here for debugging!
 
-        await saveItems(response.data);
         return response.data;
     } catch (error) {
         console.error('Error fetching data:', error.message);
@@ -59,6 +59,19 @@ const saveItems = async (items: MeritItem[]): Promise<void> => {
     }
 }
 
+const getItems = async (): Promise<MeritItemEntity[]> => {
+    const { data, error } = await supabase
+        .from('merit_items')
+        .select('*');
+
+    if (error) {
+        console.error('Error fetching data from Supabase:', error.message);
+        throw error;
+    }
+
+    return data as MeritItemEntity[];
+}
+
 function getAuthorizationString(jsonData?: string): string {
     const timestamp = getTimestamp();
     const dataString = API_ID + timestamp + jsonData ?? '';
@@ -83,4 +96,4 @@ function pad2(n): string {
     return n > 9 ? '' + n : '0' + n;
 }
 
-export { apiGetMeritItems };
+export { getItems };
