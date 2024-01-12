@@ -22,7 +22,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <main>
               <div className="main-body flex flex-col min-h-screen">
                   <Header />
-                  <div className="flex-grow">
+                  <div className="flex-grow flex">
                       {children}
                   </div>
                   <Footer />
