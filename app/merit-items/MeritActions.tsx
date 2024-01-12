@@ -1,4 +1,4 @@
-export default function Actions() {
+export default function MeritActions() {
     const handleButtonClick = () => {
         console.log('Button clicked!');
         window.location.reload();
