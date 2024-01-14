@@ -20,6 +20,19 @@ const createMeritClient = (): AxiosInstance => {
     });
 };
 
+const getItems = async (): Promise<MeritItemEntity[]> => {
+    const { data: merit_items, error } = await supabase
+        .from('merit_items')
+        .select('*');
+
+    if (error) {
+        console.error('Error fetching data from Supabase:', error.message);
+        throw error;
+    }
+
+    return merit_items as MeritItemEntity[];
+}
+
 const apiGetMeritItems = async (): Promise<MeritItem[]> => {
     const client = createMeritClient();
 
@@ -35,17 +48,38 @@ const apiGetMeritItems = async (): Promise<MeritItem[]> => {
     }
 };
 
-const getItems = async (): Promise<MeritItemEntity[]> => {
-    const { data, error } = await supabase
-        .from('merit_items')
-        .select('*');
+const updateItems = async (): Promise<void> => {
+    const apiItems = await apiGetMeritItems();
+    const meritItems = await getItems();
 
-    if (error) {
-        console.error('Error fetching data from Supabase:', error.message);
-        throw error;
+    for (const item of meritItems) {
+        const matchingItemIndex = apiItems.findIndex((apiItem) => apiItem.ItemId === item.merit_id);
+
+        if (matchingItemIndex !== -1) {
+            const matchingItem = apiItems[matchingItemIndex];
+            const { error } = await supabase
+                .from('merit_items')
+                .update({
+                    Update: undefined,
+                    'name': matchingItem.Name,
+                    'code': matchingItem.Code,
+                    'sales_price': matchingItem.SalesPrice,
+                    'quantity': matchingItem.InventoryQty,
+                    'type': matchingItem.Type,
+                })
+                .eq('merit_id', item.merit_id)
+                .select();
+
+            if (error) {
+                console.error('Error updating MRPEasy items:', error.message);
+                throw error;
+            }
+
+            apiItems.splice(matchingItemIndex, 1);
+        }
     }
 
-    return data as MeritItemEntity[];
+    await saveItems(apiItems);
 }
 
 const saveItems = async (items: MeritItem[]): Promise<void> => {
@@ -96,4 +130,4 @@ function pad2(n): string {
     return n > 9 ? '' + n : '0' + n;
 }
 
-export { getItems };
+export { getItems, updateItems };
