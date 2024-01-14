@@ -1,6 +1,8 @@
+import {updateItems} from "@/app/integrations/mrpeasy/mrpeasy.client";
+
 export default function MrpeasyActions() {
-    const handleButtonClick = () => {
-        console.log('Button clicked!');
+    const handleButtonClick = async () => {
+        await updateItems();
         window.location.reload();
     };
 

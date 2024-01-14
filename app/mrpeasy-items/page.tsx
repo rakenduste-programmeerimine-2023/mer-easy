@@ -4,9 +4,10 @@ import { getItems } from "@/app/integrations/mrpeasy/mrpeasy.client";
 import Menu from "@/components/Menu";
 import DataTable from "@/app/mrpeasy-items/MrpeasyTable";
 import '@/app/styles/layout.scss';
+import {MrpEasyItemEntity} from "@/app/integrations/mrpeasy/entities/item.entity";
 
 const MrpeasyItems = () => {
-    const [mrpeasyItems, setMrpeasyItems] = useState<MrpeasyItemEntity[]>([]);
+    const [mrpeasyItems, setMrpeasyItems] = useState<MrpEasyItemEntity[]>([]);
     const hasMounted = useRef(false);
 
     const getMrpItems = async () => {
