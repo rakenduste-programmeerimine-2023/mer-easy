@@ -35,6 +35,19 @@ const apiGetMeritItems = async (): Promise<MeritItem[]> => {
     }
 };
 
+const getItems = async (): Promise<MeritItemEntity[]> => {
+    const { data, error } = await supabase
+        .from('merit_items')
+        .select('*');
+
+    if (error) {
+        console.error('Error fetching data from Supabase:', error.message);
+        throw error;
+    }
+
+    return data as MeritItemEntity[];
+}
+
 const saveItems = async (items: MeritItem[]): Promise<void> => {
     const itemsToInsert: object[] = [];
     for (const item of items) {
@@ -54,22 +67,9 @@ const saveItems = async (items: MeritItem[]): Promise<void> => {
         .select()
 
     if (error) {
-        console.error('Error saving items to Supabase:', error.message);
+        console.error('Error saving Merit items to Supabase:', error.message);
         throw error;
     }
-}
-
-const getItems = async (): Promise<MeritItemEntity[]> => {
-    const { data, error } = await supabase
-        .from('merit_items')
-        .select('*');
-
-    if (error) {
-        console.error('Error fetching data from Supabase:', error.message);
-        throw error;
-    }
-
-    return data as MeritItemEntity[];
 }
 
 function getAuthorizationString(jsonData?: string): string {
