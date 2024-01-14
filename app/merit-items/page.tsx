@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { getItems } from "@/app/integrations/merit/merit.client";
 import Menu from "@/components/Menu";
-import DataTable from "@/components/Table";
+import DataTable from "@/app/merit-items/MeritTable";
 import '@/app/styles/layout.scss';
 import { MeritItemEntity } from "@/app/integrations/merit/entities/item.entity";
 

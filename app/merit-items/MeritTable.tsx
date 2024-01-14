@@ -1,6 +1,6 @@
 import React from 'react';
 import { Table } from 'antd';
-import Actions from "@/components/Actions";
+import MeritActions from "@/app/merit-items/MeritActions";
 
 class DataTable extends React.Component<{ tableData: any }, any> {
     render() {
@@ -40,7 +40,7 @@ class DataTable extends React.Component<{ tableData: any }, any> {
 
         return (
             <div className="table">
-                <Actions />
+                <MeritActions />
                 <Table rowKey="uuid" columns={ columns } dataSource={ tableData }/>
             </div>
         );
