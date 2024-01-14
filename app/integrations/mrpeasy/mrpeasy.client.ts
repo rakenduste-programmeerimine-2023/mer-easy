@@ -22,7 +22,7 @@ const getItems = async (): Promise<MrpEasyItemEntity[]> => {
     const { data: mrp_items, error } = await supabase
         .from('mrp_items')
         .select('*')
-        .eq('deleted', false);
+        .is('deleted_at', null);
 
     if (error) {
         console.error('Error fetching data from Supabase:', error.message);

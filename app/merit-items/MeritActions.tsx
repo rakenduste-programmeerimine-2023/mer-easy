@@ -1,6 +1,8 @@
+import {updateItems} from "@/app/integrations/merit/merit.client";
+
 export default function MeritActions() {
-    const handleButtonClick = () => {
-        console.log('Button clicked!');
+    const handleButtonClick = async () => {
+        await updateItems();
         window.location.reload();
     };
 
