@@ -1,4 +1,4 @@
-import {type NextRequest, NextResponse} from 'next/server'
+import { type NextRequest, NextResponse } from 'next/server'
 import { protectedRoutes } from "@/app/routes/routes";
 import { createClient } from "@/utils/supabase/server";
 import { cookies } from "next/headers";
@@ -10,5 +10,9 @@ export async function middleware(request: NextRequest) {
 
     if (!session.data.session && protectedRoutes.includes(request.nextUrl.pathname)) {
         return NextResponse.redirect(new URL('/?message=Unauthorized! Please log in to see this page.', request.url))
+    }
+
+    if (session.data.session && request.nextUrl.pathname === '/') {
+        return NextResponse.redirect(new URL('/home', request.url))
     }
 }
