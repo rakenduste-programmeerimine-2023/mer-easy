@@ -1,4 +1,5 @@
 import Image from "next/image";
+import AuthButton from "@/components/AuthButton";
 
 export default function Header() {
     return (
@@ -12,14 +13,10 @@ export default function Header() {
                 />
             </div>
 
-            <div className="profile-container">
-                <Image
-                    src="/nondescript_pfp.png"
-                    alt="Profile Picture"
-                    width={40}
-                    height={40}
-                    className="rounded-full"
-                />
+            <div className="flex items-center">
+                <div className="profile-container">
+                    <AuthButton />
+                </div>
             </div>
         </div>
     );
