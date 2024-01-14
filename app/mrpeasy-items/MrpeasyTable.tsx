@@ -22,15 +22,25 @@ class DataTable extends React.Component<{ tableData: any }, any> {
                 key: 'article_id',
             },
             {
-                title: 'Product id',
-                dataIndex: 'product_id',
-                key: 'product_id',
+                title: 'Group',
+                dataIndex: 'group_title',
+                key: 'group_title',
             },
             {
-                title: 'Deleted',
-                dataIndex: 'deleted',
-                key: 'deleted',
+                title: 'In Stock',
+                dataIndex: 'in_stock',
+                key: 'in_stock',
             },
+            {
+                title: 'Available',
+                dataIndex: 'available',
+                key: 'available',
+            },
+            {
+                title: 'Booked',
+                dataIndex: 'booked',
+                key: 'booked',
+            }
         ];
 
         return (
