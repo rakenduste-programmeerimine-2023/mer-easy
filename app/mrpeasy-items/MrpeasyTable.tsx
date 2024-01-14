@@ -7,11 +7,6 @@ class DataTable extends React.Component<{ tableData: any }, any> {
         let { tableData } = this.props;
         const columns = [
             {
-                title: '',
-                dataIndex: '',
-                key: '',
-            },
-            {
                 title: 'Code',
                 dataIndex: 'code',
                 key: 'code',
@@ -22,12 +17,12 @@ class DataTable extends React.Component<{ tableData: any }, any> {
                 key: 'title',
             },
             {
-                title: 'Article_id',
+                title: 'Article id',
                 dataIndex: 'article_id',
                 key: 'article_id',
             },
             {
-                title: 'Product_id',
+                title: 'Product id',
                 dataIndex: 'product_id',
                 key: 'product_id',
             },
@@ -41,7 +36,7 @@ class DataTable extends React.Component<{ tableData: any }, any> {
         return (
             <div className="table">
                 <MrpeasyActions />
-                <Table rowKey="uuid" columns={ columns } dataSource={ tableData }/>
+                <Table rowKey="article_id" columns={ columns } dataSource={ tableData }/>
             </div>
         );
     }
