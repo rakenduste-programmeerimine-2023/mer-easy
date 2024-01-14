@@ -10,18 +10,6 @@ export default function Dashboard() {
         await router.push(route);
     };
 
-    useEffect(() => {
-        const handlePopState = () => {
-            window.location.reload();
-        };
-
-        window.addEventListener('popstate', handlePopState);
-
-        return () => {
-            window.removeEventListener('popstate', handlePopState);
-        };
-    }, []);
-
     return (
         <div className="dashboard-content">
             <div className="picture-container">
