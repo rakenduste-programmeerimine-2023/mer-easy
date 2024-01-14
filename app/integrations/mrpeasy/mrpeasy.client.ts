@@ -16,7 +16,7 @@ const createClient = (): AxiosInstance => {
     });
 };
 
-const apiGetMrpItems = async (): Promise<MRPEasyItem[]> => {
+const getItems = async (): Promise<MRPEasyItem[]> => {
     const client = createClient();
 
     try {
@@ -28,4 +28,4 @@ const apiGetMrpItems = async (): Promise<MRPEasyItem[]> => {
     }
 };
 
-export { apiGetMrpItems };
+export { getItems };
