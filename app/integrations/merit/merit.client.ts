@@ -30,7 +30,6 @@ const apiGetMeritItems = async (): Promise<MeritItem[]> => {
 
         return response.data;
     } catch (error) {
-        // @ts-ignore
         console.error('Error fetching data:', error.message);
         throw error;
     }
@@ -76,7 +75,6 @@ const getItems = async (): Promise<MeritItemEntity[]> => {
 function getAuthorizationString(jsonData?: string): string {
     const timestamp = getTimestamp();
     const dataString = API_ID + timestamp + jsonData ?? '';
-    // @ts-ignore
     const hash = createHmac('sha256', dataString, API_KEY);
     const signature = encodeToBase64(hash);
 
@@ -94,7 +92,6 @@ function getTimestamp(): string {
     return yyyy + MM + dd + HH + mm + ss;
 }
 
-// @ts-ignore
 function pad2(n): string {
     return n > 9 ? '' + n : '0' + n;
 }
