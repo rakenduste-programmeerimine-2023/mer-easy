@@ -10,11 +10,11 @@ CREATE TABLE merit_items (
     quantity NUMERIC NOT NULL,
     type TEXT NOT NULL,
     created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
-    updated_at TIMESTAMPTZ NOT NULL DEFAULT now().
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT now(),
     deleted_at TIMESTAMPTZ
 );
 
--- Table: merit_items
+-- Table: mrp_items
 CREATE TABLE mrp_items (
     uuid UUID DEFAULT gen_random_uuid() PRIMARY KEY,
     article_id TEXT NOT NULL,
