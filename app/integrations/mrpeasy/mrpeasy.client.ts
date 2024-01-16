@@ -44,7 +44,7 @@ const apiGetMrpEasyItems = async (): Promise<MRPEasyItem[]> => {
     }
 };
 
-const updateItems = async (): Promise<void> => {
+const updateMrpItems = async (): Promise<void> => {
     const apiItems = await apiGetMrpEasyItems();
     const mrpItems = await getItems();
 
@@ -107,4 +107,4 @@ const saveItems = async (items: MRPEasyItem[]): Promise<void> => {
     }
 }
 
-export { getItems, updateItems };
+export { getItems, updateMrpItems };

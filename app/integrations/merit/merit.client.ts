@@ -48,7 +48,7 @@ const apiGetMeritItems = async (): Promise<MeritItem[]> => {
     }
 };
 
-const updateItems = async (): Promise<void> => {
+const updateMeritItems = async (): Promise<void> => {
     const apiItems = await apiGetMeritItems();
     const meritItems = await getItems();
 
@@ -130,4 +130,4 @@ function pad2(n): string {
     return n > 9 ? '' + n : '0' + n;
 }
 
-export { getItems, updateItems };
+export { getItems, updateMeritItems };
