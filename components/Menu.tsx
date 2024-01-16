@@ -1,24 +1,34 @@
-import {Routes} from "@/app/routes/routes";
-import {useRouter} from "next/navigation";
+import { useState, useEffect } from 'react';
+import { Routes } from '@/app/routes/routes';
+import { useRouter } from 'next/navigation';
 import '@/app/styles/menu.scss';
 import '@/app/styles/layout.scss';
 
 export default function Menu() {
     const router = useRouter();
+    const [activeRoute, setActiveRoute] = useState<Routes | null>(null);
 
     const changePage = async (route: Routes) => {
         await router.push(route);
+        setActiveRoute(route);
     };
+
+    useEffect(() => {
+        console.log('Active route changed:', activeRoute);
+    }, [activeRoute]);
 
     return (
         <div className="nav-panel">
             <div className="flex-column-container">
-                <button className="nav-button" onClick={() => changePage(Routes.HOME)}>Home</button>
-                <button className="nav-button" onClick={() => changePage(Routes.MERIT_ITEMS)}>Merit Items</button>
-                <button className="nav-button" onClick={() => changePage(Routes.MRPEASY_ITEMS)}>MRPeasy Items</button>
-                <button className="nav-button" onClick={() => console.log('Page 4 clicked')}>Page 4</button>
-                <button className="nav-button" onClick={() => console.log('Page 5 clicked')}>Page 5</button>
-                <button className="nav-button" onClick={() => console.log('Page 6 clicked')}>Page 6</button>
+                {Object.values(Routes).map((route) => (
+                    <button
+                        key={route}
+                        className={`nav-button ${activeRoute === route ? 'active-button' : ''}`}
+                        onClick={() => changePage(route)}
+                    >
+                        {route}
+                    </button>
+                ))}
             </div>
         </div>
     );

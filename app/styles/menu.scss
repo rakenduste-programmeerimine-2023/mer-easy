@@ -37,6 +37,16 @@
   }
 }
 
+.active-button {
+  padding: 10px 15px;
+  background-color: #0d5de7;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+
 @media (max-width: 768px) {
   .menu-content {
     flex-direction: column;
